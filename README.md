@@ -1,6 +1,6 @@
 # PWA
 
-Accessible at https://tiphainelaurent.github.io/PWA/
+Accessible at https://vtt-pwa.github.io/PWA/
 
 ## Project description
 
