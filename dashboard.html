@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com">
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <title>Dashboard</title>
@@ -21,6 +22,9 @@
     <script>
         function init() {
             gapi.load("auth2");
+            gapi.auth2.init({
+                client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
+            })
         }
 
         function signOut() {
