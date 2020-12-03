@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="google-signin-client_id" content="733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com">
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Dev'Coffee PWA</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <main>
-      <nav>
-        <h1>Dev'Coffee</h1>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Blog</li>
-        </ul>
-      </nav>
-      <div class="container"></div>
+        <nav>
+            <h1>Dev'Coffee</h1>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Blog</li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <a href="#" onclick="signOut();">Sign out</a>
+        </div>
     </main>
     <script>
- if (!navigator.serviceWorker.controller) {
-     navigator.serviceWorker.register("./serviceWorker.js").then(function(reg) {
-         console.log("Service worker has been registered for scope: " + reg.scope);
-     });
- }
-</script>
-  </body>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("./serviceWorker.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+
+        function onSignIn(googleUser) {
+            const profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+        function signOut() {
+            const auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+</body>
+
 </html>
