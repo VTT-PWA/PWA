@@ -19,6 +19,10 @@
         <a href="#" onclick="signOut();">Sign out</a>
     </main>
     <script>
+        function init() {
+            gapi.load("auth2");
+        }
+
         function signOut() {
             const auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function() {
