@@ -23,7 +23,6 @@
         </nav>
         <div class="container">
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <a href="#" onclick="signOut();">Sign out</a>
         </div>
     </main>
     <script>
@@ -40,13 +39,6 @@
             localStorage.setItem("email", profile.getEmail());
             localStorage.setItem("imageurl", profile.getImageUrl());
             window.location.replace("/PWA/dashboard.html")
-        }
-
-        function signOut() {
-            const auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function() {
-                console.log('User signed out.');
-            });
         }
     </script>
 </body>
