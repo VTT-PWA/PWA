@@ -21,10 +21,11 @@
     </main>
     <script>
         function init() {
-            gapi.load("auth2");
-            gapi.auth2.init({
-                client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
-            })
+            gapi.load("auth2", function() {
+                gapi.auth2.init({
+                    client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
+                });
+            });
         }
 
         function signOut() {
