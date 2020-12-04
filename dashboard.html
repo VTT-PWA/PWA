@@ -18,7 +18,7 @@
 
 <body>
     <nav style="padding: 25px; background-color: #182137;">
-        <button class="btn signout" onclick="signOut();">Sign out</button>
+        <button id="signout" class="btn signout" onclick="signOut();">Sign out</button>
         <div class="titlenav">VTT Camera tester</div>
         <button class="btn camerabtn" id="cameraButton" onclick="testCamera();">Test your camera</button>
     </nav>
@@ -30,6 +30,7 @@
     </main>
     <script>
         window.onload = () => {
+            document.getElementById("signout").innerHTML = `${localStorage.getItem("fullname") - signout}`
             gapi.load("auth2", function () {
                 gapi.auth2.init({
                     client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
