@@ -54,19 +54,18 @@
 
         const cameraButton = document.querySelector("#cameraButton");
         const video = document.querySelector("#video");
-        let stream_ = null;
 
         function stopCamera() {
-            video.stop();
+            video.pause();
+            video.hidden = true;
         }
 
         function testCamera() {
             navigator.mediaDevices.getUserMedia({
                     video: true,
-                    audio: false
+                    audio: true
                 })
                 .then(function(stream) {
-                    stream_ = stream;
                     video.srcObject = stream;
                     video.play();
                     video.controls = true;
