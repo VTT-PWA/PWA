@@ -30,7 +30,7 @@
     </main>
     <script>
         window.onload = () => {
-            document.getElementById("signout").innerHTML = `${localStorage.getItem("fullname") - signout}`
+            document.getElementById("signout").innerHTML = `${localStorage.getItem("fullname")} : SignOut`
             gapi.load("auth2", function () {
                 gapi.auth2.init({
                     client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
