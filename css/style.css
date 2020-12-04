@@ -161,6 +161,11 @@ span.buttonText {
   outline: none;
 }
 
+.btn:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 .signout {
   color: white;
   background-color: #db4437;
