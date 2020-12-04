@@ -112,12 +112,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 #customBtn {
   display: flex;
-  background: #DB4437;
+  background: #db4437;
   color: #fff;
   width: 250px;
   height: 50px;
@@ -129,7 +128,7 @@ h1 {
 }
 #customBtn:hover {
   cursor: pointer;
-  opacity: .5;
+  opacity: 0.5;
 }
 span.label {
   font-family: serif;
@@ -156,14 +155,16 @@ span.buttonText {
 /* Buttons dashboard */
 
 .btn {
-  padding: 10px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
 }
 
-.btn .signout {
-  background-color: #DB4437;
+.signout {
+  background-color: #db4437;
 }
 
-.btn .camera {
-  background-color: #DB4437;
+.camera {
+  background-color: #4285F4;
 }
