@@ -18,18 +18,19 @@
 <body>
     <main>
         <button onclick="signOut();">Sign out</button>
+        <button id="cameraButton" onclick="testCamera();">Test your camera</button>
         <div class="camera">
-            <video id="video">Video stream not available.</video>
-            <button id="cameraButton" onclick="testCamera();">Test your camera</button>
+            <video id="video">Video stream not available.</video>  
         </div>
     </main>
     <script>
-        gapi.load("auth2", function() {
+        window.onload = () => {
+            gapi.load("auth2", function() {
             gapi.auth2.init({
                 client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
             });
         });
-
+        }
         function signOut() {
             const auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function() {
