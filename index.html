@@ -34,8 +34,12 @@
             console.log(element.id);
             auth2.attachClickHandler(element, {},
                 function (googleUser) {
-                    document.getElementById('name').innerText = "Signed in: " +
-                        googleUser.getBasicProfile().getName();
+                    const profile = googleUser.getBasicProfile();
+                    localStorage.setItem("uid", profile.getId());
+                    localStorage.setItem("fullname", profile.getName());
+                    localStorage.setItem("email", profile.getEmail());
+                    localStorage.setItem("imageurl", profile.getImageUrl());
+                    window.location.replace("/PWA/dashboard.html")
                 }, function (error) {
                     alert(JSON.stringify(error, undefined, 2));
                 });
@@ -51,17 +55,12 @@
 
         <div class="card">
             <div class="card--title">Connexion</div>
-            <!-- <div class="center">
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            </div> -->
             <div id="gSignInWrapper">
                 <div id="customBtn" class="customGPlusSignIn">
-                    <!-- <span class="icon"></span> -->
                     <i class="fab fa-google"></i>
                     <span class="buttonText">Sign-In with Google</span>
                 </div>
             </div>
-            <div id="name"></div>
             <script>startApp();</script>
         </div>
 
@@ -71,15 +70,6 @@
             navigator.serviceWorker.register("./serviceWorker.js").then(function (reg) {
                 console.log("Service worker has been registered for scope: " + reg.scope);
             });
-        }
-
-        function onSignIn(googleUser) {
-            const profile = googleUser.getBasicProfile();
-            localStorage.setItem("uid", profile.getId());
-            localStorage.setItem("fullname", profile.getName());
-            localStorage.setItem("email", profile.getEmail());
-            localStorage.setItem("imageurl", profile.getImageUrl());
-            window.location.replace("/PWA/dashboard.html")
         }
     </script>
 </body>
