@@ -70,6 +70,7 @@
                 })
                 .then(function(stream) {
                     video.srcObject = stream;
+                    video.hidden = false;
                     video.play();
                     video.controls = true;
                     cameraButton.onclick = stopCamera;
