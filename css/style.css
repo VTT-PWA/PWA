@@ -162,9 +162,11 @@ span.buttonText {
 }
 
 .signout {
+  color: white;
   background-color: #db4437;
 }
 
-.camera {
+.camerabtn {
+  color: white;
   background-color: #4285F4;
 }
