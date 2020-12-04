@@ -152,3 +152,18 @@ span.buttonText {
   /* Use the Roboto font that is loaded in the <head> */
   font-family: "Roboto", sans-serif;
 }
+
+/* Buttons dashboard */
+
+.btn {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn .signout {
+  background-color: #DB4437;
+}
+
+.btn .camera {
+  background-color: #DB4437;
+}
