@@ -20,7 +20,7 @@
         <a href="#" onclick="signOut();">Sign out</a>
         <div class="camera">
             <video id="video">Video stream not available.</video>
-            <button id="startbutton">Test your camera</button>
+            <button id="startbutton" onclick="testCamera();">Test your camera</button>
         </div>
     </main>
     <script>
@@ -41,17 +41,19 @@
             });
         }
 
-        navigator.mediaDevices.getUserMedia({
-                video: true,
-                audio: false
-            })
-            .then(function(stream) {
-                video.srcObject = stream;
-                video.play();
-            })
-            .catch(function(err) {
-                console.log("An error occurred: " + err);
-            });
+        function testCamera() {
+            navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: false
+                })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function(err) {
+                    console.log("An error occurred: " + err);
+                });
+        }
     </script>
 </body>
 

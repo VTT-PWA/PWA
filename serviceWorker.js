@@ -16,6 +16,12 @@ self.addEventListener("install", installEvent => {
 
 self.onnotificationclick = function(event) {
     if (event.notification.tag === "logout") {
-        window.location.replace("/PWA/");
+        event.waitUntil(clients.matchAll({
+            type: "window"
+        }).then(function(clientList) {
+            if (clientList[0]) {
+                return clientList[0].navigate("/PWA/").then(client => client.focus());
+            }
+        }));
     }
 };
