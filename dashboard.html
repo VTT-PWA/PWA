@@ -47,6 +47,8 @@
                                 tag: 'logout'
                             });
                         });
+                    } else {
+                        window.location.replace("/PWA/");
                     }
                 });
             });
@@ -58,6 +60,7 @@
         function stopCamera() {
             video.pause();
             video.hidden = true;
+            cameraButton.onclick = testCamera;
         }
 
         function testCamera() {
