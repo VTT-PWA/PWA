@@ -18,6 +18,10 @@
 <body>
     <main>
         <a href="#" onclick="signOut();">Sign out</a>
+        <div class="camera">
+            <video id="video">Video stream not available.</video>
+            <button id="cameraButton" onclick="testCamera();">Test your camera</button>
+        </div>
     </main>
     <script>
         gapi.load("auth2", function() {
@@ -33,9 +37,50 @@
                 localStorage.removeItem("fullname");
                 localStorage.removeItem("email");
                 localStorage.removeItem("imageurl");
-                window.location.replace("/PWA/");
+
+                Notification.requestPermission(function(result) {
+                    if (result === 'granted') {
+                        navigator.serviceWorker.ready.then(function(registration) {
+                            registration.showNotification('Logout notification', {
+                                body: 'You got logout. Click me to be redirected!',
+                                vibrate: [200, 100, 200, 100, 200, 100, 200],
+                                tag: 'logout'
+                            });
+                        });
+                    } else {
+                        window.location.replace("/PWA/");
+                    }
+                });
             });
         }
+
+        const cameraButton = document.querySelector("#cameraButton");
+        const video = document.querySelector("#video");
+
+        function stopCamera() {
+            video.pause();
+            video.hidden = true;
+            cameraButton.onclick = testCamera;
+        }
+
+        function testCamera() {
+            navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: true
+                })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.hidden = false;
+                    video.play();
+                    video.controls = true;
+                    cameraButton.onclick = stopCamera;
+                })
+                .catch(function(err) {
+                    console.log("An error occurred: " + err);
+                });
+        }
+
+        cameraButton.onclick = testCamera;
     </script>
 </body>
 
