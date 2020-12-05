@@ -29,7 +29,8 @@
         <button class="btn photobtn" id="photoButton">
             <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
         </button>
-        <canvas id="pictureTaken"></canvas>
+        <canvas id="pictureCanvas"></canvas>
+        <img id="userPicture">
     </main>
     <script>
         window.onload = () => {
@@ -74,7 +75,8 @@
         const cameraButton = document.querySelector("#cameraButton");
         const video = document.querySelector("#video");
         const pictureButton = document.querySelector("#photoButton");
-        const pictureTaken = document.querySelector("#pictureTaken");
+        const pictureCanvas = document.querySelector("#pictureCanvas");
+        const pictureTaken = document.querySelector("#userPicture")
 
         function stopCamera() {
             video.pause();
@@ -96,12 +98,13 @@
                     cameraButton.onclick = stopCamera;
                     pictureButton.style.display = "inline-block";
                     pictureButton.onclick = function() {
-                        pictureTaken.style.width = video.offsetWidth;
-                        pictureTaken.style.height = video.offsetHeight;
-                        alert(video.offsetWidth, " - ", video.offsetHeight)
-                        pictureTaken.getContext("2d").drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight, 0, 0, video.offsetWidth, video.offsetHeight);
-                        var img = pictureTaken.toDataURL("image/png");
-                        alert("Picture");
+                        var width = video.videoWidth;
+                        var height = video.videoHeight;
+                        pictureCanvas.style.width = width;
+                        pictureCanvas.style.height = height;
+                        pictureCanvas.getContext("2d").drawImage(video, 0, 0, width, height, 0, 0, width, height);
+                        pictureTaken.src = pictureCanvas.toDataURL("image/png");
+                        alert("Picture taken");
                     }
                 })
                 .catch(function (err) {

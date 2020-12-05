@@ -177,6 +177,10 @@ span.buttonText {
   background-color: #4285f4;
 }
 
+#pictureCanvas {
+  display: none;
+}
+
 #photoButton {
   display: none;
 }
