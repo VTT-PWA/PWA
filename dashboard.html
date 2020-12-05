@@ -96,12 +96,10 @@
                     cameraButton.onclick = stopCamera;
                     pictureButton.style.display = "inline-block";
                     pictureButton.onclick = function() {
-                        var picture;
                         pictureTaken.style.width = video.offsetWidth;
                         pictureTaken.style.height = video.offsetHeight;
-                        picture = pictureTaken.getContext("2d")
-                        picture.drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight);
-                        pictureTaken.toDataURL("image/png");
+                        pictureTaken.getContext("2d").drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight);
+                        var img = pictureTaken.toDataURL("image/png");
                         alert("yes");
                     }
                 })
