@@ -98,9 +98,10 @@
                     pictureButton.onclick = function() {
                         pictureTaken.style.width = video.offsetWidth;
                         pictureTaken.style.height = video.offsetHeight;
+                        alert(video.offsetWidth, " - ", video.offsetHeight)
                         pictureTaken.getContext("2d").drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight, 0, 0, video.offsetWidth, video.offsetHeight);
                         var img = pictureTaken.toDataURL("image/png");
-                        alert("Pic taken");
+                        alert("Picture");
                     }
                 })
                 .catch(function (err) {
