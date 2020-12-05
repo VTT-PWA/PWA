@@ -104,7 +104,7 @@
                         pictureCanvas.style.height = height;
                         var context = pictureCanvas.getContext("2d");
                         context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
-                        // pictureTaken.src = pictureCanvas.toDataURL("image/png");
+                        pictureCanvas.toDataURL("image/png");
                         alert("Picture taken" + width + " - " + height);
                     }
                 })
