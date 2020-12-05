@@ -31,7 +31,7 @@
         </div>
         <div id="picture">
             <h2>Your picture:</h2>
-            <canvas id="pictureCanvas" width="1920" height="1080"></canvas>
+            <canvas id="pictureCanvas"></canvas>
         </div>
     </main>
     <script>
@@ -107,8 +107,8 @@
                         pictureCanvas.style.height = height;
                         var context = pictureCanvas.getContext("2d");
                         context.drawImage(video, 0, 0, width, height);
-                        pictureCanvas.toDataURL("image/png");
-                        alert("Picture taken" + width + " - " + height);
+                        pictureCanvas.toDataURL("image/png", 1.0);
+                        alert("Picture take" + width + " - " + height);
                     }
                 })
                 .catch(function (err) {
