@@ -173,16 +173,20 @@ span.buttonText {
 }
 
 .pic {
-  background-color: red;
+  display: none;
 }
 
 .camerabtn {
   color: white;
-  background-color: red; /*#4285f4*/
+  background-color: #4285f4;
 }
 
 #photoButton {
   display: none;
+}
+
+#video {
+  max-width: 100%;
 }
 
 .photobtn {
