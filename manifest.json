@@ -10,7 +10,7 @@
   "lang":"fr",
   "icons": [
     {
-      "src": "/assets/camera.png",
+      "src": "/PWA/assets/camera.png",
       "type": "image/png", "sizes": "512x512"
     }
   ]
