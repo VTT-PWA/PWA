@@ -98,7 +98,7 @@
                     pictureButton.onclick = function() {
                         pictureTaken.style.width = video.offsetWidth;
                         pictureTaken.style.height = video.offsetHeight;
-                        pictureTaken.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
+                        pictureTaken.getContext("2d").drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight, 0, 0, video.offsetWidth, video.offsetHeight);
                         var img = pictureTaken.toDataURL("image/png");
                         alert("Pic taken");
                     }
