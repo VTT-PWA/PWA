@@ -72,12 +72,10 @@
 
         const cameraButton = document.querySelector("#cameraButton");
         const video = document.querySelector("#video");
-        const picture = document.querySelector("#photobtn");
 
         function stopCamera() {
             video.pause();
             video.hidden = true;
-            picture.hidden = true;
             cameraButton.onclick = testCamera;
         }
 
@@ -89,7 +87,6 @@
                 .then(function (stream) {
                     video.srcObject = stream;
                     video.hidden = false;
-                    picture.hidden = false;
                     video.play();
                     video.controls = true;
                     cameraButton.onclick = stopCamera;
