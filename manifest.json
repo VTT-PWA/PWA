@@ -1,7 +1,7 @@
 {
   "name": "VTT camera tester",
   "short_name": "VTT",
-  "start_url": "/?xtref=install",
+  "start_url": "/PWA/?xtref=install",
   "description": "## Build Setup",
   "display": "standalone",
   "background_color": "#fdfdfd",
