@@ -14,6 +14,8 @@ self.addEventListener("install", installEvent => {
     )
 });
 
+self.addEventListener('fetch',() => console.log("fetch"));
+
 self.onnotificationclick = function(event) {
     if (event.notification.tag === "logout") {
         event.waitUntil(clients.matchAll({
