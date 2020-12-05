@@ -79,7 +79,7 @@
         function stopCamera() {
             video.pause();
             video.hidden = true;
-            pictureButton.display = none;
+            pictureButton.display = "none";
             cameraButton.onclick = testCamera;
         }
 
@@ -94,7 +94,7 @@
                     video.play();
                     video.controls = true;
                     cameraButton.onclick = stopCamera;
-                    pictureButton.display = block;
+                    pictureButton.display = "block";
                     // pictureButton.onclick = function() {
                     //     pictureTaken.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
                     //     var test = pictureTaken.toDataURL("image/png");
