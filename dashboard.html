@@ -29,7 +29,7 @@
         <button class="btn photobtn" id="photoButton">
             <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
         </button>
-        <canvas id="pictureTaken" class="pic"></canvas>
+        <canvas id="pictureTaken"></canvas>
     </main>
     <script>
         window.onload = () => {
@@ -100,7 +100,7 @@
                         pictureTaken.style.height = video.offsetHeight;
                         pictureTaken.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
                         var img = pictureTaken.toDataURL("image/png");
-                        alert("yes");
+                        alert("Pic taken");
                     }
                 })
                 .catch(function (err) {
