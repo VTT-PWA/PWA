@@ -25,11 +25,14 @@
     <main>
         <div class="camera">
             <video id="video">Video stream not available.</video>
+            <button class="btn photobtn" id="photoButton">
+                <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
+            </button>
         </div>
-        <button class="btn photobtn" id="photoButton">
-            <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
-        </button>
-        <canvas id="pictureCanvas"></canvas>
+        <div id="picture">
+            <h2>Your picture:</h2>
+            <canvas id="pictureCanvas" width="1920" height="1080"></canvas>
+        </div>
     </main>
     <script>
         window.onload = () => {
@@ -96,14 +99,16 @@
                     cameraButton.onclick = stopCamera;
                     pictureButton.style.display = "inline-block";
                     pictureButton.onclick = function() {
+                        const pictureDiv = document.querySelector("#picture");
+                        pictureDiv.style.display = "block";
                         var width = video.videoWidth;
                         var height = video.videoHeight;
                         pictureCanvas.style.width = width;
                         pictureCanvas.style.height = height;
                         var context = pictureCanvas.getContext("2d");
-                        context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
+                        context.drawImage(video, 0, 0, width, height);
                         pictureCanvas.toDataURL("image/png");
-                        alert("Picture takennn" + width + " - " + height);
+                        alert("Picture taken" + width + " - " + height);
                     }
                 })
                 .catch(function (err) {
