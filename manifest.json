@@ -1,11 +1,13 @@
 {
-  "name": "Dev'Coffee",
-  "short_name": "DevCoffee",
-  "start_url": "index.html",
+  "name": "VTT camera tester",
+  "short_name": "VTT",
+  "start_url": "/?xtref=install",
+  "description": "## Build Setup",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#db4938",
-  "orientation": "portrait-primary",
+  "orientation": "portrait",
+  "lang":"fr",
   "icons": [
     {
       "src": "/assets/camera.png",
