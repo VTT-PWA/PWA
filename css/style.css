@@ -177,6 +177,10 @@ span.buttonText {
   background-color: #4285f4;
 }
 
+#photoButton {
+  display: none;
+}
+
 .photobtn {
   position: fixed;
   bottom: 40px;
@@ -186,7 +190,6 @@ span.buttonText {
   border-radius: 50px;
   color: black;
   background-color: white;
-  display: none,
 }
 
 .titlenav {
