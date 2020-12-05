@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com">
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <title>Dashboard</title>
@@ -16,37 +17,50 @@
 </head>
 
 <body>
+    <nav style="padding: 25px; background-color: #182137;">
+        <button id="signout" class="btn signout" onclick="signOut();">Sign out</button>
+        <div class="titlenav">VTT Camera tester</div>
+        <button class="btn camerabtn" id="cameraButton" onclick="testCamera();">Test your camera</button>
+    </nav>
     <main>
-        <button onclick="signOut();">Sign out</button>
         <div class="camera">
             <video id="video">Video stream not available.</video>
-            <button id="cameraButton" onclick="testCamera();">Test your camera</button>
+            <button class="btn photobtn" id="photoButton" onclick="takeAPicture();">
+                <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
+            </button>
         </div>
     </main>
     <script>
-        gapi.load("auth2", function() {
-            gapi.auth2.init({
-                client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
+        window.onload = () => {
+            document.getElementById("signout").innerHTML = `${localStorage.getItem("fullname")} : SignOut`
+            gapi.load("auth2", function () {
+                gapi.auth2.init({
+                    client_id: "733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com"
+                });
             });
-        });
-
+        }
         function signOut() {
             const auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function() {
+            auth2.signOut().then(function () {
                 localStorage.removeItem("uid");
                 localStorage.removeItem("fullname");
                 localStorage.removeItem("email");
                 localStorage.removeItem("imageurl");
 
-                Notification.requestPermission(function(result) {
+                if (!("Notification" in window)) {
+                    alert("This browser does not support desktop notification");
+                    window.location.replace("/PWA/");
+                }
+
+                Notification.requestPermission(function (result) {
                     if (result === "granted") {
-                        navigator.serviceWorker.ready.then(function(registration) {
+                        navigator.serviceWorker.ready.then(function (registration) {
                             registration.showNotification("Logout notification", {
                                 body: "You got logout. Click me to be redirected!",
                                 vibrate: [200, 100, 200, 100, 200, 100, 200],
                                 tag: "logout"
                             });
-                        }).catch(function(error) {
+                        }).catch(function (error) {
                             window.location.replace("/PWA/");
                         });
                     } else {
@@ -58,26 +72,29 @@
 
         const cameraButton = document.querySelector("#cameraButton");
         const video = document.querySelector("#video");
+        const picture = document.querySelector("photobtn");
 
         function stopCamera() {
             video.pause();
             video.hidden = true;
+            picture.hidden = true;
             cameraButton.onclick = testCamera;
         }
 
         function testCamera() {
             navigator.mediaDevices.getUserMedia({
-                    video: true,
-                    audio: true
-                })
-                .then(function(stream) {
+                video: true,
+                audio: true
+            })
+                .then(function (stream) {
                     video.srcObject = stream;
                     video.hidden = false;
+                    picture.hidden = false;
                     video.play();
                     video.controls = true;
                     cameraButton.onclick = stopCamera;
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     console.log("An error occurred: " + err);
                     alert(err);
                 });

@@ -5,32 +5,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="google-signin-client_id" content="733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com">
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script>
+        var googleUser = {};
+        var startApp = function () {
+            gapi.load('auth2', function () {
+                auth2 = gapi.auth2.init({
+                    client_id: '733700076454-78d5javftg3pci8mh824u1033t1va9r9.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
+
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function (googleUser) {
+                    const profile = googleUser.getBasicProfile();
+                    localStorage.setItem("uid", profile.getId());
+                    localStorage.setItem("fullname", profile.getName());
+                    localStorage.setItem("email", profile.getEmail());
+                    localStorage.setItem("imageurl", profile.getImageUrl());
+                    window.location.replace("/PWA/dashboard.html")
+                }, function (error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+    </script>
+
     <title>VTT PWA</title>
 </head>
 
 <body>
     <main>
         <div class="title">VTT Camera tester</div>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+        <div class="card">
+            <div class="card--title">Connexion</div>
+            <div id="gSignInWrapper">
+                <div id="customBtn" class="customGPlusSignIn">
+                    <i class="fab fa-google"></i>
+                    <span class="buttonText">Sign-In with Google</span>
+                </div>
+            </div>
+            <script>startApp();</script>
+        </div>
+
     </main>
     <script>
         if (!navigator.serviceWorker.controller) {
-            navigator.serviceWorker.register("./serviceWorker.js").then(function(reg) {
+            navigator.serviceWorker.register("./serviceWorker.js").then(function (reg) {
                 console.log("Service worker has been registered for scope: " + reg.scope);
             });
-        }
-
-        function onSignIn(googleUser) {
-            const profile = googleUser.getBasicProfile();
-            localStorage.setItem("uid", profile.getId());
-            localStorage.setItem("fullname", profile.getName());
-            localStorage.setItem("email", profile.getEmail());
-            localStorage.setItem("imageurl", profile.getImageUrl());
-            window.location.replace("/PWA/dashboard.html")
         }
     </script>
 </body>
