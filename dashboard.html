@@ -30,7 +30,7 @@
             <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
         </button>
         <canvas id="pictureCanvas"></canvas>
-        <img id="userPicture">
+        <!-- <img id="userPicture"> -->
     </main>
     <script>
         window.onload = () => {
@@ -102,8 +102,9 @@
                         var height = video.videoHeight;
                         pictureCanvas.style.width = width;
                         pictureCanvas.style.height = height;
-                        pictureCanvas.getContext("2d").drawImage(video, 0, 0, width, height, 0, 0, width, height);
-                        pictureTaken.src = pictureCanvas.toDataURL("image/png");
+                        var context = pictureCanvas.getContext("2d");
+                        context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
+                        // pictureTaken.src = pictureCanvas.toDataURL("image/png");
                         alert("Picture taken" + width + " - " + height);
                     }
                 })
