@@ -177,6 +177,17 @@ span.buttonText {
   background-color: #4285f4;
 }
 
+.camera {
+  display: flex;
+}
+
+.photobtn {
+  align-self: flex-end;
+  justify-self: center;
+  color: white;
+  background-color: #4285f4;
+}
+
 .titlenav {
   text-align: center;
   font-size: 1em;
