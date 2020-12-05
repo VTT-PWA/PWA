@@ -29,7 +29,7 @@
         <button class="btn photobtn" id="photoButton">
             <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
         </button>
-        <canvas id="pictureTaken" style="display:none;" width="300" height="300"></canvas>
+        <canvas id="pictureTaken" class="pic" width="300" height="300"></canvas>
     </main>
     <script>
         window.onload = () => {
@@ -94,12 +94,12 @@
                     video.play();
                     video.controls = true;
                     cameraButton.onclick = stopCamera;
-                    pictureButton.style.display = "block"
-                    // pictureButton.onclick = function() {
-                    //     pictureTaken.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
-                    //     var test = pictureTaken.toDataURL("image/png");
-                    //     alert("yes");
-                    // }
+                    pictureButton.style.display = "inline-block";
+                    pictureButton.onclick = function() {
+                        pictureTaken.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
+                        var test = pictureTaken.toDataURL("image/png");
+                        alert("yes");
+                    }
                 })
                 .catch(function (err) {
                     console.log("An error occurred: " + err);

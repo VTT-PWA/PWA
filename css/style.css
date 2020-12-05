@@ -172,9 +172,13 @@ span.buttonText {
   background-color: #db4437;
 }
 
+.pic {
+  background-color: red;
+}
+
 .camerabtn {
   color: white;
-  background-color: #4285f4;
+  background-color: red; /*#4285f4*/
 }
 
 #photoButton {
