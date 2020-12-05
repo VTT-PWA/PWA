@@ -178,7 +178,7 @@ span.buttonText {
 }
 
 #picture {
-  display: hidden;
+  display: none;
 }
 
 #pictureCanvas {
