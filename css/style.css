@@ -180,8 +180,9 @@ span.buttonText {
 .photobtn {
   position: fixed;
   bottom: 40px;
-  right: 40px;
-  margin: auto;
+  margin: 5% auto;
+  left: 0;
+  right: 0;
   border-radius: 50px;
   color: black;
   background-color: white;
