@@ -178,9 +178,9 @@ span.buttonText {
 }
 
 .photobtn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
   margin: auto;
   border-radius: 50px;
   color: black;
