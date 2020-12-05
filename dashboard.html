@@ -30,7 +30,6 @@
             <img src="assets/camera.png" alt="Take a picture !" width="40" height="40">
         </button>
         <canvas id="pictureCanvas"></canvas>
-        <!-- <img id="userPicture"> -->
     </main>
     <script>
         window.onload = () => {
@@ -76,7 +75,6 @@
         const video = document.querySelector("#video");
         const pictureButton = document.querySelector("#photoButton");
         const pictureCanvas = document.querySelector("#pictureCanvas");
-        const pictureTaken = document.querySelector("#userPicture")
 
         function stopCamera() {
             video.pause();
@@ -105,7 +103,7 @@
                         var context = pictureCanvas.getContext("2d");
                         context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
                         pictureCanvas.toDataURL("image/png");
-                        alert("Picture taken" + width + " - " + height);
+                        alert("Picture takennn" + width + " - " + height);
                     }
                 })
                 .catch(function (err) {
