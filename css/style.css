@@ -182,8 +182,9 @@ span.buttonText {
   bottom: 0;
   left: 0;
   margin: auto;
-  color: white;
-  background-color: #4285f4;
+  border-radius: 50px;
+  color: black;
+  background-color: white;
 }
 
 .titlenav {
